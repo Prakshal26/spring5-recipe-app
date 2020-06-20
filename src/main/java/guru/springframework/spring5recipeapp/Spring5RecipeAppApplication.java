@@ -11,7 +11,10 @@ Each Recipe has a difficulty level associated with. So we will create a enum ins
 have three level of difficulties like easy,moderate and Hard.
 
  */
-
+/*
+In video 139 we have initialized the data in data.sql file under resources. We need to go to
+localhost:8080/h2-console and can see the data being added
+ */
 package guru.springframework.spring5recipeapp;
 
 import org.springframework.boot.SpringApplication;
