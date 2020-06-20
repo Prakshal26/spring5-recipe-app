@@ -21,6 +21,13 @@ public class Ingredient {
     @ManyToOne
     private Recipe recipe;
 
+    /*
+    This is a unidirectional relationship as we have not created the object of Ingrideint class in
+    UnitOfMeasure class.
+     */
+    @OneToOne(fetch = FetchType.EAGER)
+    private UnitOfMeasure unitOfMeasure;
+
     public Long getId() {
         return id;
     }
@@ -51,5 +58,13 @@ public class Ingredient {
 
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
+    }
+
+    public UnitOfMeasure getUnitOfMeasure() {
+        return unitOfMeasure;
+    }
+
+    public void setUnitOfMeasure(UnitOfMeasure unitOfMeasure) {
+        this.unitOfMeasure = unitOfMeasure;
     }
 }
