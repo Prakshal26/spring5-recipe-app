@@ -2,7 +2,7 @@
 
 ENtity Relationship
 Recipe to Notes-----One to One
-Recipe to cateogry --- Many to many
+Recipe to cateogry --- Many to many ie Recipe can have many Cateogary and a cateogary can have many recipe
 recipe to Ingridients ----One to many
 
 Ingridents to unit of measure -----one to one

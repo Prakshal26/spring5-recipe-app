@@ -47,7 +47,14 @@ public class Recipe {
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
 
-
+    /*
+    It is manytomany so we will get many values so we need a SET.
+     */
+    @ManyToMany
+    @JoinTable(name = "recipe_category",//In H2 DB console we will have table by this name recipe_cateogary
+    joinColumns = @JoinColumn(name= "recipe_id"),//The table will have one feild recipe id and one field category id
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set <Category> categories;
 
     public Long getId() {
         return id;
@@ -143,5 +150,13 @@ public class Recipe {
 
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }
