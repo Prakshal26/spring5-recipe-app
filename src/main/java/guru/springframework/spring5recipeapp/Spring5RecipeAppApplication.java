@@ -7,6 +7,9 @@ recipe to Ingridients ----One to many
 
 Ingridents to unit of measure -----one to one
 
+Each Recipe has a difficulty level associated with. So we will create a enum inside domain and
+have three level of difficulties like easy,moderate and Hard.
+
  */
 
 package guru.springframework.spring5recipeapp;

@@ -27,9 +27,18 @@ public class Recipe {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set <Ingredient> ingredients;
 
-    //private Difficulty difficulty;
+
     @Lob
     private Byte[] image;
+    //Every recipe has some difficulty so created Enum for it.
+    /*
+    One thing to note is EnumType can be String or Ordinal.Ordinal is default that is it
+    will start indexing and wil take Easy as 1, Moderate as 2 and so on. But String will not
+    do the indexing instead it will pick it as it is i.e. everywhere it will use EASY as EASY only.
+    Will not think easy as 1 but instead will use EASY as EASY only and HARD as HARD.
+     */
+    @Enumerated(value = EnumType.STRING)
+    private Difficulty difficulty;
 
     /*
     Here we are making Cascade type All that means we are deleting the recipe then we should
@@ -118,5 +127,21 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
     }
 }
