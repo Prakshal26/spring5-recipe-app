@@ -24,17 +24,24 @@ public class RecipeController {
 We are getting id from index.html and based on id we need to fetch that particular recipe and
 give the content of that recipe to show.html.
  */
-    @RequestMapping("/recipe/show/{id}") //We have to pick the id value from the URL.
+    @RequestMapping("/recipe/{id}/show") //We have to pick the id value from the URL.
     public String showById(@PathVariable String id, Model model){
         model.addAttribute("recipe", recipeService.findById(Long.valueOf(id)));
         return "recipe/show";
     }
-
+    /*
+    If we want to create a new form. It will store the recipe
+     */
     @RequestMapping("recipe/new")
     public String newRecipe(Model model){
         model.addAttribute("recipe", new RecipeCommand());
 
         return "recipe/recipeform";
+    }
+    @RequestMapping("recipe/{id}/update")
+    public String updateRecipe(@PathVariable String id, Model model){
+        model.addAttribute("recipe", recipeService.findCommandById(Long.valueOf(id)));
+        return  "recipe/recipeform";
     }
 
     /*
@@ -49,6 +56,6 @@ give the content of that recipe to show.html.
         As soon as we have submitted the form we have to go to some page, so by this re-direct
         we will go to/recipe/show after submitting the form.
          */
-        return "redirect:/recipe/show/" + savedCommand.getId();
+        return "redirect:/recipe/" + savedCommand.getId() + "/show";
     }
 }
