@@ -43,17 +43,32 @@ include this link in header and include the templates to give look to web page -
                             </thead>
                             <!--From IndexController class we are retruning to index, from there
                             is is getting the recipe id and description.-->
+                            <!--From v 194 we will add the href links, i.e we will go to that
+                             particular page after clicking on that link-->
                             <tr th:remove="all">
+                                <!-- from v194 We dont want reecipe description on index page, instead we
+                                will go inside the link and see details
                                 <td th:text="${recipe.id}">123</td>
                                 <td th:text="${recipe.description}">Tasty Goodnees 1</td>
+                                -->
+                                <td>123</td>
+                                <td>Tasty Goodness 1</td>
+                                <td><a href="#">View</a></td> <!--Click on view and go to link href -->
                             </tr>
                             <tr th:remove="all">
-                                <td th:text="${recipe.id}">12333</td>
-                                <td th:text="${recipe.description}">Tasty Goodnees 2</td>
+                                <td>12333</td>
+                                <td>Tasty Goodnees 2</td>
+                                <td><a href="#">View</a></td>
                             </tr>
                             <tr th:each="recipe : ${recipes}">
+                                <!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
                                 <td th:text="${recipe.id}">334</td>
                                 <td th:text="${recipe.description}">Tasty Goodnees 3</td>
+                                <td><a href="#" th:href="@{'/recipe/show/' + ${recipe.id}}">View</a></td>
+                                <!--When we will click on view it will go to /recipe/show page. As there are
+                                multiple recipes, so we need to map it with id that is which id to show.
+                                We are sending id from here and our RecipeController will get this id
+                                and based on this id we will display that recipe.-->
                             </tr>
                         </table>
                     </div>
