@@ -5,17 +5,19 @@ import guru.springframework.spring5recipeapp.domain.UnitOfMeasure;
 import guru.springframework.spring5recipeapp.repositories.CategoryRepository;
 import guru.springframework.spring5recipeapp.repositories.UnitOfMeasureRepository;
 import guru.springframework.spring5recipeapp.services.RecipeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.print.attribute.standard.Fidelity;
-import java.util.Optional;
+
 
 /*
 USe OF Controller- in main application page ie Spring5RecipeAppApplication we have given SpringApplication
 at the start of the class. So that will look for Controller so we have given it controller.
  */
+
+@Slf4j
 @Controller
 public class IndexController {
 
@@ -69,7 +71,7 @@ public class IndexController {
 
     @RequestMapping({"","/","/index"})
     public String getIndexPage(Model model) {
-
+        log.debug("Getting Index page");//Features of Project lombok slf4j
         model.addAttribute("recipes",recipeService.getRecipe());
 
         return "index";
