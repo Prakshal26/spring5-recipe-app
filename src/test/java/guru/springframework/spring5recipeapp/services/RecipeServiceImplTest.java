@@ -35,14 +35,13 @@ public class RecipeServiceImplTest {
     @Mock
     RecipeCommandToRecipe recipeCommandToRecipe;
 
-
-
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        recipeService = new RecipeServiceImpl(recipeRepository,recipeCommandToRecipe,recipeToRecipeCommand);
+        recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
+
     @Test
     public void getRecipeByIdTest() throws Exception {
         Recipe recipe = new Recipe();
@@ -85,8 +84,7 @@ public class RecipeServiceImplTest {
         HashSet receipesData = new HashSet();
         receipesData.add(recipe);
 
-        //when(recipeService.getRecipes()).thenReturn(receipesData);
-        when(recipeRepository.findAll()).thenReturn(receipesData);
+        when(recipeService.getRecipe()).thenReturn(receipesData);
 
         Set<Recipe> recipes = recipeService.getRecipe();
 
