@@ -13,6 +13,8 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 public class IngredientCommand {
+
+    private Long recipeId;
     private Long id;
     private String description;
     private BigDecimal amount;
